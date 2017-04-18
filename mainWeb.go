@@ -13,7 +13,7 @@ import (
 	"math/rand"
 	"strconv"
 	"time"
-	"./espeakBox"
+	"os/exec"
 )
 //"Google" : "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyDhdQvs9XLKd7TVYyYX98WWfB1z4VOddko",
 /*
@@ -27,6 +27,7 @@ var Str struct{
 	IpSearch string
 	MapData string
 	Pokemon string
+	Url string
 
 }
 var StrRand string
@@ -57,8 +58,6 @@ var URLS = map[string]string{
 main starts the application, handles HTTP requests and initiates the appropriate functions
  */
 func main() {
-	http.HandleFunc("/speech", espeakBox.SpeechHandler)
-	http.HandleFunc("/voices", espeakBox.VoicesHandler)
 	http.HandleFunc("/", homepage)
 	http.HandleFunc("/FormattedJson", searchBox)
 	http.HandleFunc("/AltSubmit", formInputHandler)
@@ -335,20 +334,31 @@ Concept for handling multiple input buttons
 ###Only concept, not working. Further development needed###
  */
 func formInputHandler(w http.ResponseWriter, r *http.Request) {
-	r.ParseForm()  //Parse url parameters passed, then parse the response packet for the POST body (request body)
+	r.ParseForm() //Parse url parameters passed, then parse the response packet for the POST body (request body)
 	// attention: If you do not call ParseForm method, the following data can not be obtained form
-	fmt.Println(r.Form) // print information on server side.
+	//fmt.Println(r.Form) // print information on server side.
 
 	if r.Form.Get("input") == "Praat-Comparison" {
-			fmt.Println("check")
-
-			//searchBox(w,r)
+		fmt.Println("check")
+		//searchBox(w,r)
 
 	} else if r.Form.Get("inputText") != "" {
-		fmt.Println("FORM!")
 
+		r.ParseForm() //Parse url parameters passed, then parse the response packet for the POST body (request body)
+		// attention: If you do not call ParseForm method, the following data can not be obtained form
+		//fmt.Println(r.Form) // print information on server side.
+		urlText := r.Form.Get("inputText")
+		Str.Url= "http://158.37.63.236:8080/speech?text=" + urlText
 
-
+		lp := path.Join("templates", "layout.html")
+		tp := path.Join("templates", "audioPlayer.tmpl")
+		t, pErr := template.ParseFiles(lp, tp)
+		if pErr != nil {
+			panic(pErr)
+		}
+		pErr = t.Execute(w, Str)
+		if pErr != nil {
+			http.Error(w, pErr.Error(), http.StatusInternalServerError)
+		}
 	}
-
 }
