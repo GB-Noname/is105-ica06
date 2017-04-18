@@ -13,6 +13,7 @@ import (
 	"math/rand"
 	"strconv"
 	"time"
+	"./espeakBox"
 )
 //"Google" : "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyDhdQvs9XLKd7TVYyYX98WWfB1z4VOddko",
 /*
@@ -56,8 +57,8 @@ var URLS = map[string]string{
 main starts the application, handles HTTP requests and initiates the appropriate functions
  */
 func main() {
-
-
+	http.HandleFunc("/speech", espeakBox.SpeechHandler)
+	http.HandleFunc("/voices", espeakBox.VoicesHandler)
 	http.HandleFunc("/", homepage)
 	http.HandleFunc("/FormattedJson", searchBox)
 	http.HandleFunc("/AltSubmit", formInputHandler)
@@ -345,6 +346,8 @@ func formInputHandler(w http.ResponseWriter, r *http.Request) {
 
 	} else if r.Form.Get("inputText") != "" {
 		fmt.Println("FORM!")
+
+
 
 	}
 
