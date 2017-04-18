@@ -1,0 +1,53 @@
+{{ define "title" }}An example layout{{ end }}
+
+{{ define "content" }}
+<center>
+<h1>Press "Show Formatted JSON" without any text in INPUT to show the standard page <br>
+To get input only from specific API's enter the following options seperated with a semicolon <br>
+    Inputs listed as a valid input string: IP;IpSearch;OWL;Gtimezone;Pokemon<br>
+
+</h1>
+<form name="loginForm" method="post" action="/FormattedJson">
+    INPUT: <input type="text" name="input"> <br/>
+    <input type="submit" name="Search" value="Show Formatted JSON" />
+<br>
+</form>
+<h2>IP returns the server IP address<br>
+    IpSearch returns additional information based on the IP address [IP required for this result]<br>
+    OWL returns static weather from Kristiansand<br>
+    Gtimezone returns static timezone information from Norway<br>
+    Pokemon returns a random pokemon</h2>
+</center>
+<form action="/AltSubmit" method="post">
+    <center><input type="submit" name="input" value="Praat-Comparison" />
+    </center>
+</form>
+
+<center>
+    <br>
+    <div id="asd">
+        <form action="/AltSubmit" method="post">
+            Enter text <input type="text" name="inputText" />
+            <br>
+            <input type="submit" name="GoText" value="Submit request" />
+
+        </form>
+        <br>
+        <button onclick="asd(1)">Close without submitting</button>
+    </div>
+
+    <button onclick="asd(2)">Text to Speech</button>
+
+    <script type="text/javascript">
+        function asd(a)
+        {
+            if(a===1)
+                document.getElementById("asd").style.display="none";
+            else
+                document.getElementById("asd").style.display="block";
+        }
+        window.onload = asd(1);
+    </script>
+</center>
+
+{{ end }}
