@@ -338,16 +338,13 @@ func formInputHandler(w http.ResponseWriter, r *http.Request) {
 	// attention: If you do not call ParseForm method, the following data can not be obtained form
 	fmt.Println(r.Form) // print information on server side.
 
-	if r.Form.Get("IP;IpSearch;Pokemon") == "JSON_Raw" {
+	if r.Form.Get("input") == "Praat-Comparison" {
 			fmt.Println("check")
 
-			searchBox(w,r)
+			//searchBox(w,r)
 
-	} else if r.Form.Get("Dynamic") == "Dynamic_Only" {
-		fmt.Println("ABABBABBABABABBA")
-
-	} else if r.Form.Get("RawFormat") == "ShowCode" {
-		fmt.Println("This is code")
+	} else if r.Form.Get("inputText") != "" {
+		fmt.Println("FORM!")
 
 	}
 

@@ -18,31 +18,25 @@ To get input only from specific API's enter the following options seperated with
     Gtimezone returns static timezone information from Norway<br>
     Pokemon returns a random pokemon</h2>
 </center>
-<form action="/FormattedJson" method="post">
-    <center><input type="submit" name="input" value="IP;IpSearch;Pokemon" />
-        <input type="submit" name="input" value="IP;IpSearch;Pokemon" />
-        <input type="submit" name="input" value="OWL" />
+<form action="/AltSubmit" method="post">
+    <center><input type="submit" name="input" value="Praat-Comparison" />
     </center>
 </form>
 
 <center>
     <br>
     <div id="asd">
-        <form action="InputHandler" method="post">
-            Enter JSON URL <input type="text" name="JSON Link" />
-            Enter Enter all variables with & between <input type="text" name="Name" />
+        <form action="/AltSubmit" method="post">
+            Enter text <input type="text" name="inputText" />
             <br>
-            Enter API key if needed <input type="text" name="Section" />
-            Any additional ending for URL? <input type="number" name="Amount" min="0" step="1"/>
-            <br>
-            <input type="submit" name="AddIt" value="Submit request" />
+            <input type="submit" name="GoText" value="Submit request" />
 
         </form>
         <br>
         <button onclick="asd(1)">Close without submitting</button>
     </div>
 
-    <button onclick="asd(2)">Special request</button>
+    <button onclick="asd(2)">Text to Speech</button>
 
     <script type="text/javascript">
         function asd(a)
