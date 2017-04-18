@@ -90,7 +90,7 @@ fi
 
 if [[ ! "$INFILE" ]]
    then
-      INFILE=record_`date "+%Y%b%d_%H-%M-%S"`.flac
+      INFILE=record_`date "+%Y%b%d_%H-%M-%S"`.m4a
       if  [[ ! "$SRATE" ]]
          then
             SRATE=16000
