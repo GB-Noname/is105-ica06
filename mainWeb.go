@@ -347,7 +347,23 @@ func formInputHandler(w http.ResponseWriter, r *http.Request) {
 		// attention: If you do not call ParseForm method, the following data can not be obtained form
 		//fmt.Println(r.Form) // print information on server side.
 		urlText := r.Form.Get("inputText")
-		Str.Url= "http://158.37.63.236:8080/speech?text=" + urlText
+		var byte bytes.Buffer
+		byte.WriteString("http://158.37.63.236:8080/speech?text=" + urlText)
+
+		if r.Form.Get("pitch") != "" {
+			byte.WriteString("&pitch =" + r.Form.Get("pitch"))
+				//<0, 99; default 50>]
+		}
+		if r.Form.Get("speed") != "" {
+			byte.WriteString("&speed=" + r.Form.Get("speed"))
+			//<80,450; default 175 wpm>]
+		}
+		if  r.Form.Get("voice") != "" {
+			byte.WriteString("&voice=" + r.Form.Get("voice"))
+			//<name; default en>]
+
+		}
+		Str.Url= byte.String()
 
 		lp := path.Join("templates", "layout.html")
 		tp := path.Join("templates", "audioPlayer.tmpl")

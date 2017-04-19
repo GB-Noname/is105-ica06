@@ -30,6 +30,12 @@ To get input only from specific API's enter the following options seperated with
         <form action="/AltSubmit" method="post">
             Enter text <input type="text" name="inputText" />
             <br>
+            <h2>Optional fields, empty for default</h2>
+            Enter speed 0-99 [50 default] <input type="text" name="speed"/>
+            <br>
+            Enter pitch 80-450 [175 default] <input type="text" name="pitch"/>
+            Enter voice [en default] <input type="text" name="voice"/>
+            <br>
             <input type="submit" name="GoText" value="Submit request" />
 
         </form>
