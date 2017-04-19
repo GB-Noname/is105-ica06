@@ -13,7 +13,6 @@ import (
 	"math/rand"
 	"strconv"
 	"time"
-	"os/exec"
 )
 //"Google" : "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyDhdQvs9XLKd7TVYyYX98WWfB1z4VOddko",
 /*
@@ -62,7 +61,7 @@ func main() {
 	http.HandleFunc("/FormattedJson", searchBox)
 	http.HandleFunc("/AltSubmit", formInputHandler)
 	http.HandleFunc("/maps", maps)
-	http.ListenAndServe(":8001", nil)
+	http.ListenAndServe(":8008", nil)
 }
 
 /*

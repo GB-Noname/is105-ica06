@@ -8,3 +8,8 @@ width="100%"
         frameborder="0" style="border:0"
         src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDhdQvs9XLKd7TVYyYX98WWfB1z4VOddko
                     &q={{.MapData}}" allowfullscreen>
+
+                    <form action="/AltSubmit" method="post">
+                        <center><input type="submit" name="input" value="Praat-Comparison" />
+                        </center>
+                    </form>
