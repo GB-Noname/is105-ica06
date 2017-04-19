@@ -351,7 +351,7 @@ func formInputHandler(w http.ResponseWriter, r *http.Request) {
 		byte.WriteString("http://158.37.63.236:8080/speech?text=" + urlText)
 
 		if r.Form.Get("pitch") != "" {
-			byte.WriteString("&pitch=" + r.Form.Get("pitch"))
+			byte.WriteString("&pitch=" + r.Form.Get("pit	ch"))
 				//<0, 99; default 50>]
 		}
 		if r.Form.Get("speed") != "" {
