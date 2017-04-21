@@ -18,16 +18,23 @@ To get input only from specific API's enter the following options seperated with
     Gtimezone returns static timezone information from Norway<br>
     Pokemon returns a random pokemon</h2>
 </center>
-<form action="/AltSubmit" method="post">
-    <center><input type="submit" name="input" value="Praat-Comparison" />
-    </center>
-</form>
 
 <center>
     <br>
+
+    <h2> To start text to speech feature press this</h2>
+    <button onclick="asd(2)">Text to Speech</button>
+
     <div id="asd">
-        <form action="/speech" method="post">
+        <br>
+        <form action="/AltSubmit" method="post">
             Enter text <input type="text" name="inputText" />
+            <br>
+            <h2>Optional fields, empty for default</h2>
+            Enter speed 0-99 [50 default] <input type="text" name="speed"/>
+            <br>
+            Enter pitch 80-450 [175 default] <input type="text" name="pitch"/>
+            Enter voice [en default] <input type="text" name="voice"/>
             <br>
             <input type="submit" name="GoText" value="Submit request" />
 
@@ -35,8 +42,6 @@ To get input only from specific API's enter the following options seperated with
         <br>
         <button onclick="asd(1)">Close without submitting</button>
     </div>
-
-    <button onclick="asd(2)">Text to Speech</button>
 
     <script type="text/javascript">
         function asd(a)
