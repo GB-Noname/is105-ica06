@@ -19,6 +19,7 @@ func main() {
 	client, err := speech.NewClient(ctx)
 	if err != nil {
 		log.Fatalf("Failed to create client: %v", err)
+
 	}
 
 	// Sets the name of the audio file to transcribe.
