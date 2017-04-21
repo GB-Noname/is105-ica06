@@ -1,59 +1,6 @@
 {{ define "title" }}An example layout{{ end }}
 
 {{ define "content" }}
-<center>
-<h2>Press "Show Formatted JSON" without any text in INPUT to show the standard page <br>
-To get input only from specific API's enter the following options seperated with a semicolon <br>
-    Inputs listed as a valid input string: IP;IpSearch;OWL;Gtimezone;Pokemon<br>
-</h2>
-<form name="loginForm" method="post" action="/FormattedJson">
-    INPUT: <input type="text" name="input"> <br/>
-    <input type="submit" name="Search" value="Show Formatted JSON" />
-<br>
-</form>
-<h3>IP returns the server IP address<br>
-    IpSearch returns additional information based on the IP address [IP required for this result]<br>
-    OWL returns static weather from Kristiansand<br>
-    Gtimezone returns static timezone information from Norway<br>
-    Pokemon returns a random pokemon</h3>
-</center>
-
-<center>
-    <br>
-
-    <h2> To start text to speech feature press this</h2>
-    <button onclick="textInput(2)">Text to Speech</button>
-
-    <div id="textInput">
-        <br>
-        <form action="/AltSubmit" method="post">
-            Enter text <input type="text" name="inputText" />
-            <br>
-            <h2>Optional fields, empty for default</h2>
-            Enter speed 0-99 [50 default] <input type="text" name="speed"/>
-            <br>
-            Enter pitch 80-450 [175 default] <input type="text" name="pitch"/>
-            Enter voice [en default] <input type="text" name="voice"/>
-            <br>
-            <input type="submit" name="GoText" value="Submit request" />
-
-        </form>
-        <br>
-        <button onclick="textInput(1)">Close without submitting</button>
-    </div>
-
-    <script type="text/javascript">
-        function textInput(a)
-        {
-            if(a===1)
-                document.getElementById("textInput").style.display="none";
-            else
-                document.getElementById("textInput").style.display="block";
-        }
-        window.onload = textInput(1);
-    </script>
-</center>
-
 <style>
     * {
         font-family: Verdana, Arial, sans-serif;
@@ -69,26 +16,27 @@ To get input only from specific API's enter the following options seperated with
         color:darkviolet;
     }
     .button {
-        background: -webkit-linear-gradient(top,#008dfd 0,#0370ea 100%);
-        border: 1px solid #076bd2;
+        background: -webkit-linear-gradient(top, #797f80 0, #5a5a61 100%);
+        border: 1px solid dimgray;
         border-radius: 3px;
-        color: #fff;
-        display: none;
+        color: #ffffff;
+        display: block;
         font-size: 13px;
         font-weight: bold;
         line-height: 1.3;
         padding: 8px 25px;
         text-align: center;
-        text-shadow: 1px 1px 1px #076bd2;
+        text-shadow: 1px 1px 1px #000000;
         letter-spacing: normal;
     }
     .center {
-        padding: 10px;
+        padding: 5px;
         text-align: center;
     }
     .final {
         color: lightgrey;
         padding-right: 3px;
+        text-shadow: 1px 1px 1px #000000;
     }
     .interim {
         color: lightgrey;
@@ -109,8 +57,18 @@ To get input only from specific API's enter the following options seperated with
         text-align: left;
         vertical-align: top;
     }
+    .inf {
+        font-size: 20px;
+        text-align: center;
+        color: lightgrey;
+        text-shadow: 2px 2px #000000;
+    }
     #headline {
-        font-size: 40px;
+        font-size: 35px;
+        font-weight: 300;
+    }
+    #head {
+        font-size: 30px;
         font-weight: 300;
     }
     #info {
@@ -118,6 +76,12 @@ To get input only from specific API's enter the following options seperated with
         text-align: center;
         color: lightgrey;
         visibility: hidden;
+    }
+    #inf {
+        font-size: 20px;
+        text-align: center;
+        color: lightgrey;
+        text-shadow: 2px 2px #000000;
     }
     #results {
         font-size: 14px;
@@ -134,6 +98,61 @@ To get input only from specific API's enter the following options seperated with
         padding: 0;
     }
 </style>
+<center>
+    <p class="center" id="head">
+Press "Show Formatted JSON" without any text in INPUT to show the standard page <br>
+To get input only from specific API's enter the following options seperated with a semicolon <br>
+    Inputs listed as a valid input string: IP;IpSearch;OWL;Gtimezone;Pokemon<br>
+</p>
+<form name="loginForm" method="post" action="/FormattedJson">
+    INPUT: <input type="text" name="input"> <br/>
+    <input type="submit" name="Search" value="Show Formatted JSON" class="button"/>
+</form>
+    <p class="center" id="inf">
+    IP returns the server IP address<br>
+    IpSearch returns additional information based on the IP address [IP required]<br>
+    OWL returns static weather from Kristiansand<br>
+    Gtimezone returns static timezone information from Norway<br>
+    Pokemon returns a random pokemon
+    </p>
+</center>
+
+<center>
+
+    <h2 class="inf"> To start text to speech feature press this</h2>
+    <button class=button onclick="textInput(2)">Text to Speech</button>
+
+    <div id="textInput">
+        <br>
+        <form action="/AltSubmit" method="post">
+            Enter text <input type="text" name="inputText" />
+            <br>
+            <h2>Optional fields, empty for default</h2>
+            Enter speed 0-99 [50 default] <input type="text" name="speed"/>
+            <br>
+            Enter pitch 80-450 [175 default] <input type="text" name="pitch"/>
+            Enter voice [en default] <input type="text" name="voice"/>
+            <br>
+            <input type="submit" class=button name="GoText" value="Submit request" />
+
+        </form>
+        <br>
+        <button class=button onclick="textInput(1)">Close without submitting</button>
+    </div>
+
+    <script type="text/javascript">
+        function textInput(a)
+        {
+            if(a===1)
+                document.getElementById("textInput").style.display="none";
+            else
+                document.getElementById("textInput").style.display="block";
+        }
+        window.onload = textInput(1);
+    </script>
+</center>
+
+
 <h1 class="center" id="headline">
     <a href="http://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html">
         Web Speech API</a> Speech to text</h1>
