@@ -2,21 +2,20 @@
 
 {{ define "content" }}
 <center>
-<h1>Press "Show Formatted JSON" without any text in INPUT to show the standard page <br>
+<h2>Press "Show Formatted JSON" without any text in INPUT to show the standard page <br>
 To get input only from specific API's enter the following options seperated with a semicolon <br>
     Inputs listed as a valid input string: IP;IpSearch;OWL;Gtimezone;Pokemon<br>
-
-</h1>
+</h2>
 <form name="loginForm" method="post" action="/FormattedJson">
     INPUT: <input type="text" name="input"> <br/>
     <input type="submit" name="Search" value="Show Formatted JSON" />
 <br>
 </form>
-<h2>IP returns the server IP address<br>
+<h3>IP returns the server IP address<br>
     IpSearch returns additional information based on the IP address [IP required for this result]<br>
     OWL returns static weather from Kristiansand<br>
     Gtimezone returns static timezone information from Norway<br>
-    Pokemon returns a random pokemon</h2>
+    Pokemon returns a random pokemon</h3>
 </center>
 
 <center>
@@ -92,12 +91,12 @@ To get input only from specific API's enter the following options seperated with
         padding-right: 3px;
     }
     .interim {
-        color: gray;
+        color: black;
     }
     .info {
         font-size: 14px;
         text-align: center;
-        color: #777;
+        color: black;
         display: none;
     }
     .right {
@@ -117,7 +116,7 @@ To get input only from specific API's enter the following options seperated with
     #info {
         font-size: 20px;
         text-align: center;
-        color: #777;
+        color: black;
         visibility: hidden;
     }
     #results {
@@ -136,7 +135,7 @@ To get input only from specific API's enter the following options seperated with
 </style>
 <h1 class="center" id="headline">
     <a href="http://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html">
-        Web Speech API</a> Demonstration</h1>
+        Web Speech API</a> Speech to text</h1>
 <div id="info">
     <p id="info_start">Click on the microphone icon and begin speaking.</p>
     <p id="info_speak_now">Speak now.</p>
@@ -157,7 +156,7 @@ To get input only from specific API's enter the following options seperated with
 </div>
 <div class="right">
     <button id="start_button" onclick="startButton(event)">
-        <img id="start_img" src="mic.gif" alt="Start"></button>
+        <img id="start_img" src="img/mic.gif" alt="Start"></button>
 </div>
 <div id="results">
     <span id="final_span" class="final"></span>
@@ -165,21 +164,6 @@ To get input only from specific API's enter the following options seperated with
     <p>
 </div>
 <div class="center">
-    <div class="sidebyside" style="text-align:right">
-        <button id="copy_button" class="button" onclick="copyButton()">
-            Copy and Paste</button>
-        <div id="copy_info" class="info">
-            Press Control-C to copy text.<br>(Command-C on Mac.)
-        </div>
-    </div>
-    <div class="sidebyside">
-        <button id="email_button" class="button" onclick="emailButton()">
-            Create Email</button>
-        <div id="email_info" class="info">
-            Text sent to default email application.<br>
-            (See chrome://settings/handlers to change.)
-        </div>
-    </div>
     <p>
     <div id="div_language">
         <select id="select_language" onchange="updateCountry()"></select>
@@ -365,27 +349,6 @@ To get input only from specific API's enter the following options seperated with
         var subject = encodeURI(final_transcript.substring(0, n));
         var body = encodeURI(final_transcript.substring(n + 1));
         window.location.href = 'mailto:?subject=' + subject + '&body=' + body;
-    }
-    function copyButton() {
-        if (recognizing) {
-            recognizing = false;
-            recognition.stop();
-        }
-        copy_button.style.display = 'none';
-        copy_info.style.display = 'inline-block';
-        showInfo('');
-    }
-    function emailButton() {
-        if (recognizing) {
-            create_email = true;
-            recognizing = false;
-            recognition.stop();
-        } else {
-            createEmail();
-        }
-        email_button.style.display = 'none';
-        email_info.style.display = 'inline-block';
-        showInfo('');
     }
     function startButton(event) {
         if (recognizing) {
