@@ -59,14 +59,14 @@ To get input only from specific API's enter the following options seperated with
         font-family: Verdana, Arial, sans-serif;
     }
     a:link {
-        color:#000;
+        color:white;
         text-decoration: none;
     }
     a:visited {
-        color:#000;
+        color:#dddddd;
     }
     a:hover {
-        color:#33F;
+        color:darkviolet;
     }
     .button {
         background: -webkit-linear-gradient(top,#008dfd 0,#0370ea 100%);
@@ -87,16 +87,16 @@ To get input only from specific API's enter the following options seperated with
         text-align: center;
     }
     .final {
-        color: black;
+        color: lightgrey;
         padding-right: 3px;
     }
     .interim {
-        color: black;
+        color: lightgrey;
     }
     .info {
         font-size: 14px;
         text-align: center;
-        color: black;
+        color: lightgrey;
         display: none;
     }
     .right {
@@ -116,16 +116,17 @@ To get input only from specific API's enter the following options seperated with
     #info {
         font-size: 20px;
         text-align: center;
-        color: black;
+        color: lightgrey;
         visibility: hidden;
     }
     #results {
         font-size: 14px;
         font-weight: bold;
-        border: 1px solid #ddd;
+        border: 1px solid black;
         padding: 15px;
         text-align: left;
         min-height: 150px;
+        background-color: #777777;
     }
     #start_button {
         border: 0;
@@ -156,7 +157,7 @@ To get input only from specific API's enter the following options seperated with
 </div>
 <div class="right">
     <button id="start_button" onclick="startButton(event)">
-        <img id="start_img" src="img/mic.gif" alt="Start"></button>
+        <img id="start_img" src="https://gb-noname.github.io/mic.gif" alt="Start"></button>
 </div>
 <div id="results">
     <span id="final_span" class="final"></span>
@@ -267,16 +268,16 @@ To get input only from specific API's enter the following options seperated with
         recognition.onstart = function() {
             recognizing = true;
             showInfo('info_speak_now');
-            start_img.src = 'mic-animate.gif';
+            start_img.src = 'https://gb-noname.github.io/mic-animate.gif';
         };
         recognition.onerror = function(event) {
             if (event.error == 'no-speech') {
-                start_img.src = 'mic.gif';
+                start_img.src = 'https://gb-noname.github.io/mic.gif';
                 showInfo('info_no_speech');
                 ignore_onend = true;
             }
             if (event.error == 'audio-capture') {
-                start_img.src = 'mic.gif';
+                start_img.src = 'https://gb-noname.github.io/mic.gif';
                 showInfo('info_no_microphone');
                 ignore_onend = true;
             }
@@ -294,7 +295,7 @@ To get input only from specific API's enter the following options seperated with
             if (ignore_onend) {
                 return;
             }
-            start_img.src = 'mic.gif';
+            start_img.src = 'https://gb-noname.github.io/mic.gif';
             if (!final_transcript) {
                 showInfo('info_start');
                 return;
@@ -390,5 +391,7 @@ To get input only from specific API's enter the following options seperated with
         email_info.style.display = 'none';
     }
 </script>
+
+
 
 {{ end }}
