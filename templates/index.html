@@ -23,9 +23,9 @@ To get input only from specific API's enter the following options seperated with
     <br>
 
     <h2> To start text to speech feature press this</h2>
-    <button onclick="asd(2)">Text to Speech</button>
+    <button onclick="textInput(2)">Text to Speech</button>
 
-    <div id="asd">
+    <div id="textInput">
         <br>
         <form action="/AltSubmit" method="post">
             Enter text <input type="text" name="inputText" />
@@ -40,18 +40,18 @@ To get input only from specific API's enter the following options seperated with
 
         </form>
         <br>
-        <button onclick="asd(1)">Close without submitting</button>
+        <button onclick="textInput(1)">Close without submitting</button>
     </div>
 
     <script type="text/javascript">
-        function asd(a)
+        function textInput(a)
         {
             if(a===1)
-                document.getElementById("asd").style.display="none";
+                document.getElementById("textInput").style.display="none";
             else
-                document.getElementById("asd").style.display="block";
+                document.getElementById("textInput").style.display="block";
         }
-        window.onload = asd(1);
+        window.onload = textInput(1);
     </script>
 </center>
 
