@@ -13,10 +13,10 @@
         color:#dddddd;
     }
     a:hover {
-        color:darkviolet;
+        color: #d35600;
     }
     .button {
-        background: -webkit-linear-gradient(top, #797f80 0, #5a5a61 100%);
+        background: -webkit-linear-gradient(top, #1650d3 0, #000eff 100%);
         border: 1px solid dimgray;
         border-radius: 3px;
         color: #ffffff;
@@ -34,12 +34,12 @@
         text-align: center;
     }
     .final {
-        color: lightgrey;
+        color: dimgrey;
         padding-right: 3px;
         text-shadow: 1px 1px 1px #000000;
     }
     .interim {
-        color: lightgrey;
+        color: #001ad3;
     }
     .info {
         font-size: 14px;
@@ -60,27 +60,32 @@
     .inf {
         font-size: 20px;
         text-align: center;
-        color: lightgrey;
+        color: white;
         text-shadow: 2px 2px #000000;
     }
     #headline {
         font-size: 35px;
         font-weight: 300;
+        text-shadow: 2px 2px #000000;
+        font-color: white;
     }
     #head {
-        font-size: 30px;
+        font-size: 20px;
         font-weight: 300;
+        font-color: white;
+        text-shadow: 2px 2px #000000;
     }
     #info {
         font-size: 20px;
         text-align: center;
-        color: lightgrey;
+        color: white;
         visibility: hidden;
+        text-shadow: 2px 2px #000000;
     }
     #inf {
         font-size: 20px;
         text-align: center;
-        color: lightgrey;
+        color: white;
         text-shadow: 2px 2px #000000;
     }
     #results {
@@ -90,7 +95,7 @@
         padding: 15px;
         text-align: left;
         min-height: 150px;
-        background-color: #777777;
+        background-color: #dbdbdb;
     }
     #start_button {
         border: 0;
@@ -128,13 +133,13 @@ To get input only from specific API's enter the following options seperated with
             Enter text <input type="text" name="inputText" />
             <br>
             <h2>Optional fields, empty for default</h2>
-            Enter speed 0-99 [50 default] <input type="text" name="speed"/>
+            Enter speed 80-450 [175 default] <input type="text" name="speed"/>
             <br>
             Enter pitch 80-450 [175 default] <input type="text" name="pitch"/>
-            Enter voice [en default] <input type="text" name="voice"/>
             <br>
-            <input type="submit" class=button name="GoText" value="Submit request" />
-
+            Enter voice [en default]&emsp;&emsp;&emsp;&emsp;&emsp; <input type="text" name="voice"/>
+            <br>
+            <input type="submit" name="GoText" value="Submit request" />
         </form>
         <br>
         <button class=button onclick="textInput(1)">Close without submitting</button>
