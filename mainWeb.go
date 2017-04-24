@@ -13,12 +13,6 @@ import (
 	"math/rand"
 	"strconv"
 	"time"
-
-	// Imports the Google Cloud Speech API client package.
-	"golang.org/x/net/context"
-
-	speech "cloud.google.com/go/speech/apiv1"
-	speechpb "google.golang.org/genproto/googleapis/cloud/speech/v1"
 )
 //"Google" : "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyDhdQvs9XLKd7TVYyYX98WWfB1z4VOddko",
 /*
@@ -357,19 +351,19 @@ func formInputHandler(w http.ResponseWriter, r *http.Request) {
 		byte.WriteString("http://158.37.63.236:8080/speech?text=" + urlText)
 
 		if r.Form.Get("pitch") != "" {
-			byte.WriteString("&pitch =" + r.Form.Get("pitch"))
-			//<0, 99; default 50>]
+			byte.WriteString("&pitch=" + r.Form.Get("pit	ch"))
+				//<0, 99; default 50>]
 		}
 		if r.Form.Get("speed") != "" {
 			byte.WriteString("&speed=" + r.Form.Get("speed"))
 			//<80,450; default 175 wpm>]
 		}
-		if r.Form.Get("voice") != "" {
+		if  r.Form.Get("voice") != "" {
 			byte.WriteString("&voice=" + r.Form.Get("voice"))
 			//<name; default en>]
 
 		}
-		Str.Url = byte.String()
+		Str.Url= byte.String()
 
 		lp := path.Join("templates", "layout.html")
 		tp := path.Join("templates", "audioPlayer.tmpl")
@@ -377,57 +371,7 @@ func formInputHandler(w http.ResponseWriter, r *http.Request) {
 		if pErr != nil {
 			panic(pErr)
 		}
-		pErr = t.Execute(w, Str)
-		if pErr != nil {
-			http.Error(w, pErr.Error(), http.StatusInternalServerError)
-		}
-	}
-}
-func googleSpeech(w http.ResponseWriter, r *http.Request) {
-	ctx := context.Background()
-
-	// Creates a client.
-	client, err := speech.NewClient(ctx)
-	if err != nil {
-		log.Fatalf("Failed to create client: %v", err)
-	}
-
-	// Sets the name of the audio file to transcribe.
-	filename := "/path/to/audio.raw"
-
-	// Reads the audio file into memory.
-	data, err := ioutil.ReadFile(filename)
-	if err != nil {
-		log.Fatalf("Failed to read file: %v", err)
-	}
-
-	// Detects speech in the audio file.
-	resp, err := client.Recognize(ctx, &speechpb.RecognizeRequest{
-		Config: &speechpb.RecognitionConfig{
-			Encoding:        speechpb.RecognitionConfig_LINEAR16,
-			SampleRateHertz: 16000,
-			LanguageCode:    "en-US",
-		},
-		Audio: &speechpb.RecognitionAudio{
-			AudioSource: &speechpb.RecognitionAudio_Content{Content: data},
-		},
-	})
-
-	// Prints the results.
-	for _, result := range resp.Results {
-		for _, alt := range result.Alternatives {
-			fmt.Printf("\"%v\" (confidence=%3f)\n", alt.Transcript, alt.Confidence)
-
-		}
-		Str.Url = byte.String()
-
-		lp := path.Join("templates", "layout.html")
-		tp := path.Join("templates", "googletest.tmpl")
-		t, pErr := template.ParseFiles(lp, tp)
-		if pErr != nil {
-			panic(pErr)
-		}
-		pErr = t.Execute(w, Str)
+		pErr = t.Execute(w,Str)
 		if pErr != nil {
 			http.Error(w, pErr.Error(), http.StatusInternalServerError)
 		}
