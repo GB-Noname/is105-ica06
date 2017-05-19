@@ -1,5 +1,15 @@
 # is105-ica06
 
+#### Bidragsytere:
+
+
+I Github står det 3 contributors. Alle har bidratt, vi har jobbet i team.
+CastleDev har samarbeidet med MortenSchibbye og adrianlo,
+Ampede15 har samarbeidet med arnebw13, 
+Fosso har samarbeidet med asalmu16,
+
+
+
 ### Main
 https://github.com/GB-Noname/is105-ica06
 
